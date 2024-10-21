@@ -1,2 +1,2 @@
-# mvp-euroinfo-istio-asset
-This repository is usefull for you if you want to learn istio, get hands-on experience, be aware of the multiple design considerations and architecture patterns before implementing istio in your Kuberneets projects
+# Istio Service Mesh Asset on Openshift & Kubernetes
+This is my personal experience with isitio implementation in Openshift, this is usefull for you if you want to learn istio, get hands-on experience and have awareness of multiple design considerations and architecture patterns before implementing istio in your Kuberneets projects.
