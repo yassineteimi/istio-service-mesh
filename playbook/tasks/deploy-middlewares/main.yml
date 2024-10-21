@@ -1,6 +1,0 @@
----
-- name: Deploy - Phase 1 | Middlewares
-  include_tasks: middlewares.yml
-
-- name: Post-deploy - Phase 1 | Middlewares
-  include_tasks: post-deploy-middlewares.yml

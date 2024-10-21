@@ -1,3 +1,0 @@
----
-- name: Deploy - Phase 2 | AI Decision Coordination applications
-  include_tasks: aidc.yml

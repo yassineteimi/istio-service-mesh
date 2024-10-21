@@ -1,3 +1,0 @@
----
-- name: Deploy - Phase 2 | Operators
-  include_tasks: operators.yml
