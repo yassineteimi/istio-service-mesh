@@ -1,9 +1,6 @@
 site_name: Istio Service Mesh Asset
 
 nav:
-#  - About the MVP: index.md
-#  - MVP Architecture: architecture.md
-#  - AIDC install guide: product_doc.md
   - Introduction to Istio service mesh: 
     - Introduction: index.md
     - Istio Architecture: istio_architecture.md

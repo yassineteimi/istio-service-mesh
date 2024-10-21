@@ -11,7 +11,7 @@ __Istio Service Mesh__ is a network connectivity (i.e. __mesh__) within Kubernet
 Another huge benefit of Istio is the default in-cluster __mutual TLS__.
 
 Without istio, say if using __Ingress controller__, you can configure __TLS termnation__ at ingress controller pod, like this:
-![alt text](../imgs/istio_gateway_tls.png "")
+![alt text](imgs/istio_gateway_tls.png "")
 
 With __istio__, __connections among pods__ in the cluster behind the what-used-to-be ingress controller (i.e. Istio Gateway) can be __mutual TLS__, without changing app code:
-![alt text](../imgs/istio_mesh_mtls.png "")
+![alt text](imgs/istio_mesh_mtls.png "")
