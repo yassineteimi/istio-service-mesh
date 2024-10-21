@@ -4,10 +4,10 @@ all: ingress-ca server client
 
 ingress-ca: ingress-ca.key ingress-ca.crt ingress-ca.jks
 
-server: ORGANISATION_UNIT = ClientEng-SERVER
+server: ORGANISATION_UNIT = YassineT-SERVER
 server: server.key server.crt server.jks server.kdb 
 
-client: ORGANISATION_UNIT = ClientEng-CLIENT
+client: ORGANISATION_UNIT = YassineT-CLIENT
 client: client.key client.crt client.jks
 
 
