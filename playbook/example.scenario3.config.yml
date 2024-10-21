@@ -1,0 +1,84 @@
+---
+# @section Helm
+# Global configuration
+helm_auth:
+  repo_username: ''
+  repo_password: ''
+
+# @section OpenShift
+# Global configuration
+# WARNING: Do not alterate the value of oc.project.ibm
+oc:
+  project:
+    aidc: aidc
+    ibm: ibm-common-services
+
+# Security configuration
+security:
+  podSecurityContext:
+    enabled: true
+    fsGroup: 1000630000
+  containerSecurityContext:
+    enabled: true
+    runAsUser: 1000630000
+
+# @section repo
+# Global configuration
+# point to the repo where the aidc images are available
+repo:
+  dispatch_image: icr.io/aidc/dispatch@sha256:fc5d8da478ca2400ed03698ec47d4343d6ac281d6c06fba7122cf693b36de728
+  studio_image: icr.io/aidc/studio@sha256:18b53cc4feb3e2605c5c223557393fbfda237bd994ea508da02368d6425cae53
+
+# @section IBM
+# Global configuration
+ibm:
+  catalog:
+    enabled: false
+  operator:
+    enabled: false
+    version: 'v3.22'
+
+# @section Keycloak
+# Global configuration
+keycloak:
+  enabled: false
+
+# Keycloak auth
+keycloak_auth:
+  adminUser: 'aidc'
+  adminPassword: 'aidc2022'
+
+# Keycloak tls
+keycloak_tls:
+  enabled: false
+  existingSecret: 'aidc-keycloak-tls'
+  keystorePassword: 'aidc2022'
+  truststorePassword: 'aidc2022'
+
+# Database connection
+keycloak_db:
+  enabled: false
+  host: 'aidc-keycloak-db-postgresql'
+  port: 5432
+  user: 'aidc'
+  password: 'aidc'
+  database: 'aidc'
+  postgresPassword: 'r00tpa55'
+
+# @section MongoDB
+# Global configuration
+mongodb:
+  enabled: false
+  architecture: standalone
+  statefulSet: true
+  host: 'aidc-mongodb'
+  port: 27017
+
+# MongoDB auth
+mongodb_auth:
+  rootUser: 'aidc_admin'
+  rootPassword: 'r00tpa55'
+
+mongodb_tls:
+  enabled: false
+  existingSecret: 'aidc-mongodb-tls'

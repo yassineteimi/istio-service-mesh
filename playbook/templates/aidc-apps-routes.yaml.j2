@@ -1,0 +1,42 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: aidc-dispatch
+  namespace: {{ oc.project.aidc }}
+  labels:
+    app.kubernetes.io/name: dispatch
+    app.kubernetes.io/version: "1.0"
+    app.kubernetes.io/component: backend
+    app.kubernetes.io/part-of: aidc
+spec:
+  port:
+    targetPort: 8083
+    protocol: TCP
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+  to:
+    kind: Service
+    name: aidc-dispatch
+
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: aidc-studio
+  namespace: {{ oc.project.aidc }}
+  labels:
+    app.kubernetes.io/name: studio
+    app.kubernetes.io/version: "1.0"
+    app.kubernetes.io/component: frontend
+    app.kubernetes.io/part-of: aidc
+spec:
+  port:
+    targetPort: 8080
+    protocol: TCP
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+  to:
+    kind: Service
+    name: aidc-studio

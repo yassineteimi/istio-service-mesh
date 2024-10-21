@@ -1,0 +1,87 @@
+site_name: Istio Service Mesh Asset
+
+nav:
+  - About the MVP: index.md
+  - MVP Architecture: architecture.md
+  - AIDC install guide: product_doc.md
+  - Introduction to Istio service mesh: 
+    - Introduction: istio_intro.md
+    - Istio Architecture: istio_architecture.md
+    - Why istio: why_istio.md
+    - Things to know before implementing Istio service mesh: before_istio.md
+    - Design considerations at the edge of the servicemesh: design_considerations.md
+  - Istio Mesh Design:
+    - Mesh installation: mesh_installation.md
+    - Traffic management: traffic_management.md
+  - Istio Mesh Security:
+    - TLS/HTTPS at the edge of the mesh: mesh_edge_security.md
+    - OAuth at the edge of the mesh: oauth_jwt.md
+  - Istio Mesh Management:
+    - Mesh Observability and monitoring: mesh_observability.md
+    - Debug your mesh: mesh_debug.md
+
+site_author: Yassine TEIMI
+site_description: >-
+  Istio service mesh implementation guide, based on my own experience.
+
+# Repository
+repo_name: yassineteimi/istio-service-mesh
+repo_url: https://github.com/yassineteimi/istio-service-mesh
+
+# Configuration
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - toc.integrate
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+  language: en
+  palette:
+    - scheme: slate 
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode    
+      primary: teal
+      accent: lime
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline 
+        name: Switch to dark mode
+      primary: teal
+      accent: purple 
+  #logo: images/istio_k8s_logo.png
+  
+extra:
+  social:
+    - icon: fontawesome/brands/github-alt
+      link: https://github.ibm.com/Yassine-Teimi
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com/in/yassine-teimi
+
+extra_javascript:
+  - https://polyfill.io/v3/polyfill.min.js #?features=es6
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - admonition
+  - pymdownx.arithmatex:
+      generic: true
+  - footnotes
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.mark
+
+plugins:
+  - search
+
+copyright: |
+  &copy; 2024 <a href="https://github.com/Yassine-Teimi"  target="_blank" rel="noopener">Yassine TEIMI</a>

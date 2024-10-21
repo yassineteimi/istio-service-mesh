@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  cert-generator:
+    build:
+      context: .
+    volumes:
+      - ./certs:/certs
+    working_dir: '/certs'
+    command: ${CMD:-make}
+    environment:
+      - COMMON_NAME=*.containers.appdomain.cloud
+      - SAN_DNS=*.itzroks-665001ngq8-n98nbi-6ccd7f378ae819553d37d5f2ee142bd6-0000.eu-de.containers.appdomain.cloud
+      - ORGANISATION=IBM
+      - ORGANISATION_UNIT=ClientEng
+      - COUNTRY=FR
+      - LOCALITY=Paris
+      - STATE=Paris

@@ -1,0 +1,34 @@
+image:
+  registry: {{ mongodb_image.registry }}
+  repository: {{ mongodb_image.repository }}
+  tag: {{ mongodb_image.tag }}
+
+architecture: {{ mongodb.architecture }}
+useStatefulSet: {{ mongodb.statefulSet }}
+
+containerPorts:
+  mongodb: {{ mongodb.port }}
+
+auth:
+  enabled: true
+  rootUser: {{ mongodb_auth.rootUser }}
+  rootPassword: {{ mongodb_auth.rootPassword }}
+
+{% if security.podSecurityContext.enabled %}
+podSecurityContext:
+  enabled: true
+  fsGroup: {{ security.podSecurityContext.fsGroup }}
+{% endif %}
+{% if security.containerSecurityContext.enabled %}
+containerSecurityContext:
+  enabled: true
+  runAsUser: {{ security.containerSecurityContext.runAsUser }}
+  runAsNonRoot: true
+{% endif %}
+
+{% if mongodb_tls.enabled %}
+tls:
+  enabled: true
+  standalone:
+    existingSecret: {{ mongodb_tls.existingSecret }}
+{% endif %}

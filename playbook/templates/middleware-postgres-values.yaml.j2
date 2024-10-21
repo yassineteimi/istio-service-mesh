@@ -1,0 +1,23 @@
+image:
+  registry: {{ keycloak_db_image.registry }}
+  repository: {{ keycloak_db_image.repository }}
+  tag: {{ keycloak_db_image.tag }}
+
+auth:
+  postgresPassword: {{ keycloak_db.postgresPassword }}
+  username: {{ keycloak_db.user }}
+  password: {{ keycloak_db.password }}
+  database: {{ keycloak_db.database }}
+
+{% if security.podSecurityContext.enabled %}
+primary:
+  podSecurityContext:
+    enabled: true
+    fsGroup: {{ security.podSecurityContext.fsGroup }}
+{% endif %}
+{% if security.containerSecurityContext.enabled %}
+  containerSecurityContext:
+    enabled: true
+    runAsUser: {{ security.containerSecurityContext.runAsUser }}
+    runAsNonRoot: true
+{% endif %}

@@ -1,0 +1,33 @@
+---
+- name: Deploy - Phase 1 | Create Postgres instance (used by Keycloak)
+  kubernetes.core.helm:
+    release_name: 'aidc-keycloak-db'
+    release_namespace: '{{ oc.project.aidc }}'
+    chart_ref: '{{ keycloak_db_chart.repo }}/{{ keycloak_db_chart.name }}'
+    chart_version: '{{ keycloak_db_chart.version }}'
+    values_files:
+      - '{{ playbook_dir }}/output/middlewares/postgres-values.yaml'
+    wait: true
+  when: keycloak_db.enabled|bool == true
+
+- name: Deploy - Phase 1 | Create Keycloak instance
+  kubernetes.core.helm:
+    release_name: 'aidc-keycloak'
+    release_namespace: '{{ oc.project.aidc }}'
+    chart_ref: '{{ keycloak_chart.repo }}/{{ keycloak_chart.name }}'
+    chart_version: '{{ keycloak_chart.version }}'
+    values_files:
+      - '{{ playbook_dir }}/output/middlewares/keycloak-values.yaml'
+    wait: true
+  when: keycloak.enabled|bool == true
+
+- name: Deploy - Phase 1 | Create MongoDB instance
+  kubernetes.core.helm:
+    release_name: 'aidc-mongodb'
+    release_namespace: '{{ oc.project.aidc }}'
+    chart_ref: '{{ mongodb_chart.repo }}/{{ mongodb_chart.name }}'
+    chart_version: '{{ mongodb_chart.version }}'
+    values_files:
+      - '{{ playbook_dir }}/output/middlewares/mongodb-values.yaml'
+    wait: true
+  when: mongodb.enabled|bool == true

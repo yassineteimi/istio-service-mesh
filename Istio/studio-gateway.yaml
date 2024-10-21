@@ -1,0 +1,28 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: studio-gateway
+  namespace: keycloak-servicemesh
+spec:
+  selector:
+    istio: ingressgateway # use Istio default gateway implementation
+  servers:
+  # - port:
+  #     number: 80
+  #     name: http
+  #     protocol: HTTP
+    # hosts:
+    # - "*"
+    # tls:
+    #   httpsRedirect: true # sends 301 redirect for http requests
+  - port:
+      name: https
+      number: 443
+      protocol: HTTPS
+    tls:
+      mode: SIMPLE
+      credentialName: istio-ingressgateway-aidc-certs
+      serverCertificate: /etc/istio/ingressgateway-aidc-certs/tls.crt
+      privateKey: /etc/istio/ingressgateway-aidc-certs/tls.key
+    hosts:
+    - studio-keycloak-servicemesh-istio-system.itzroks-665001ngq8-n98nbi-6ccd7f378ae819553d37d5f2ee142bd6-0000.eu-de.containers.appdomain.cloud

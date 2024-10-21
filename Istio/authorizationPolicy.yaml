@@ -1,0 +1,25 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: dispatch-require-jwt
+  namespace: istio-system
+spec:
+  selector:
+    matchLabels:
+      istio: ingressgateway
+      #app: dispatch-app
+  action: DENY
+  rules:
+  - from:
+    # - source:
+    #     namespaces: ["keycloak-servicemesh"]
+    # condition on the jwt token, it does a concatenation if token values iss and sub : iss + '/' + sub
+    - source:
+        notRequestPrincipals: ['*']
+    to:
+    - operation:
+        paths: ["/dispatchOC/domainOC/"] # to integrate as a variable.
+    # to:
+    #  - operation:
+    #      # require jwt only when the request is coming from
+    #      hosts: ["dispatch-*"]

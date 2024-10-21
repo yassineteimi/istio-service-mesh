@@ -1,0 +1,17 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: dispatch
+  namespace: istio-system
+spec:
+  host: dispatch-keycloak-servicemesh-istio-system.itzroks-665001ngq8-n98nbi-6ccd7f378ae819553d37d5f2ee142bd6-0000.eu-de.containers.appdomain.cloud
+  port:
+    targetPort: 443
+  to:
+    kind: Service
+    name: istio-ingressgateway
+    weight: 100
+  tls:
+    termination: passthrough
+    insecureEdgeTerminationPolicy: Redirect
+  wildcardPolicy: None

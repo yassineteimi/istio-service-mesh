@@ -1,0 +1,9 @@
+---
+apiVersion: operators.coreos.com/v1alpha2
+kind: OperatorGroup
+metadata:
+  name: operatorgroup
+  namespace: {{ oc.project.ibm }}
+spec:
+  targetNamespaces:
+  - {{ oc.project.ibm }}

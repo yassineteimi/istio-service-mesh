@@ -1,0 +1,27 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: aidc-dispatch-vs
+  namespace: keycloak-servicemesh
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - dispatch-gateway
+  http:
+  - timeout: 3s
+  - retries:
+      attempts: 3 # default 1. The number of retries for a given request. The interval between retries will be determined automatically (25ms+). Actual number of retries attempted depends on the request timeout
+      perTryTimeout: 3s
+      retryOn: 5xx,gateway-error,reset,connect-failure,refused-stream,retriable-4xx # https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-on
+  - name: "dispatch-route"
+    # match:
+    # - uri:
+    #     prefix: /dispatchOC/domainOC/
+    # - uri:
+    #     prefix: /health
+    route:
+    - destination:
+        host: dispatch-svc
+        port:
+          number: 444
