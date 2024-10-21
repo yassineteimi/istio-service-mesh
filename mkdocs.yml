@@ -5,7 +5,7 @@ nav:
 #  - MVP Architecture: architecture.md
 #  - AIDC install guide: product_doc.md
   - Introduction to Istio service mesh: 
-    - Introduction: istio_intro.md
+    - Introduction: index.md
     - Istio Architecture: istio_architecture.md
     - Why istio: why_istio.md
     - Things to know before implementing Istio service mesh: before_istio.md
