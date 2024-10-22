@@ -34,9 +34,9 @@ To recap what Data Plane's Envoy Proxy is capable of:
         - if the destination’s host is outside Istio service mesh (e.g. AWS RDS endpoint), __non-mesh service needs to be added using a service entry__
     - Sidecars
 
-During AIDC MVP, I didn't implement all of this traffic management features, only the most important ones, obviously because of the project deadline. 
+In my personal experience, I didn't implement all of this traffic management features, only the most important ones, obviously because of the project deadline. 
 
-Here are the priioritized traffic management design implemented:
+Here are the prioritized traffic management design implemented:
 
 ## Timeout configuraiton for Resilience Testing using VirtualService
 
@@ -179,6 +179,8 @@ You will see Circuit Breaker icon on `productpage` workload on Kiali:
 
 
 ### How to Test Circuit Breaker
+
+While the following example is for kubernetes, the sames goes for Openshift.
 
 Create a fortio pod
 ```sh
