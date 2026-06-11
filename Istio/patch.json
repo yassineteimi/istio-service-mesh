@@ -1,0 +1,20 @@
+[{
+  "op": "add",
+  "path": "/spec/template/spec/containers/0/volumeMounts/0",
+  "value": {
+    "mountPath": "/etc/istio/ingressgateway-aidc-certs",
+    "name": "ingressgateway-aidc-certs",
+    "readOnly": true
+  }
+},
+{
+  "op": "add",
+  "path": "/spec/template/spec/volumes/0",
+  "value": {
+  "name": "ingressgateway-aidc-certs",
+    "secret": {
+      "secretName": "istio-ingressgateway-aidc-certs",
+      "optional": true
+    }
+  }
+}]

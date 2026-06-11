@@ -1,0 +1,18 @@
+apiVersion: security.istio.io/v1beta1
+kind: RequestAuthentication
+metadata:
+  name: "jwt-dispatch"
+  namespace: istio-system
+spec:
+  selector:
+    matchLabels:
+      istio: ingressgateway
+      #app: dispatch-app
+  jwtRules:
+  - issuer: http://keycloak-keycloak-servicemesh-istio-system.itzroks-665001ngq8-n98nbi-6ccd7f378ae819553d37d5f2ee142bd6-0000.eu-de.containers.appdomain.cloud/realms/aidc_dispatch
+    # audiences:
+    # - dispatch-admin
+    #   account
+    jwks: | 
+      {"keys":[{"kid":"NSrpYJkLBV29sHqeezorgVZ6wGfjPUX6kHR-HJv0kGc","kty":"RSA","alg":"RS256","use":"sig","n":"nSRverEPPTSmb3T3Ad23RsYz3egE2K2wLOfd0ygXxKeaaZBkJzhTt9cwxyuubwK3VXH4VAVvLwxATLqZcD1xMJLUE2ouwBGZn5eRlFRZdchQciqxCP1PUXE_4u2uMUGoYAFPfNn8PQ_m4plyxysM27OJ4L7lX2ZF6BOd-f7Qt1YmARHQXyQeVFJ3chV2jmVLVvb0C5TOvBUKblIU7x64cSWCmAbXO90lIXN9EAwJ6DELVYfUpeXPGk1MVt9rTydhfJjcjLyK2MlqPF9YDJSeNIh24Si5qfH2rtT83X4kFAc0ajaGVrq2E44iJWIaW0kzONuH95JuZAFiuMCZoUOBZQ","e":"AQAB","x5c":["MIICqTCCAZECBgGEdxNT/jANBgkqhkiG9w0BAQsFADAYMRYwFAYDVQQDDA1haWRjX2Rpc3BhdGNoMB4XDTIyMTExNDE2NTYwNloXDTMyMTExNDE2NTc0NlowGDEWMBQGA1UEAwwNYWlkY19kaXNwYXRjaDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJ0kb3qxDz00pm909wHdt0bGM93oBNitsCzn3dMoF8SnmmmQZCc4U7fXMMcrrm8Ct1Vx+FQFby8MQEy6mXA9cTCS1BNqLsARmZ+XkZRUWXXIUHIqsQj9T1FxP+LtrjFBqGABT3zZ/D0P5uKZcscrDNuzieC+5V9mRegTnfn+0LdWJgER0F8kHlRSd3IVdo5lS1b29AuUzrwVCm5SFO8euHElgpgG1zvdJSFzfRAMCegxC1WH1KXlzxpNTFbfa08nYXyY3Iy8itjJajxfWAyUnjSIduEouanx9q7U/N1+JBQHNGo2hla6thOOIiViGltJMzjbh/eSbmQBYrjAmaFDgWUCAwEAATANBgkqhkiG9w0BAQsFAAOCAQEAMCMoLxcK6syL/bBnrpg88LOxzp38yTSq04JBmRcMyvSuShqkVWHRpP/3lnee3YqU1QNPXZE9Ebwv0p6foyf3rPNiCWd0dFLCrk9u5U6+4nAP9TeeN4c2isFvjqJSkN5Aw9GDhm+s6yYspJb3h75sk8NsXmykFPkq+hxOPxn/1RhW27GZQM4IEp97Rhk7b+vgwDXids/BnTMyHxRIizOKQ53KmichPySyd5Cn3Fu89+xiI/vVjUfZLHibRQ5CYT2raTIqE488qCRjAxqcBGCdEYS0Y1OdbQBK/SAvODHPlD4ck2U5Qo9WkOlewI6r7T7L3ugMipJ5BhycwemQdc/SJg=="],"x5t":"dyNvtaJvOVZUFjIHuzz6z7NqCPI","x5t#S256":"yVNzgcX6doRQyCHD1jn4YNKU9aDi7AZZIqfyNhvSWao"},{"kid":"j3bCqBbmlrREbHzl2zMLPmds3m2egOxo25uVjfC2NbM","kty":"RSA","alg":"RSA-OAEP","use":"enc","n":"mCacM0ZzzOjNy6EFitMtlbakz-8sc_hQDnMmYtoEATcxyViS44VRGVFP3uQGn2ChcKdoUJFhvv_eAtjLmBVpvGW6k70sekE_V3Z9NufxP7075c6d0125YN0_GSnCy7vNDBaOmqJOo_aYjizfT7LV7AXBAzw5d5Nq1o2Zp68o32JdmDEwrD_EZl9FUNs5n_Bjk0Y7kCBdAYb1_FHvCsYJ90eh3D-VNjd3aXyQ_B3xJCk73roZtmpvHyvKRXLfbe8uGMsHeMdwzGDQgONOdL6qXPQzYerKMhpFJUG2rKPtI-AGk20dLnCZbxbNDJMhY--3iDNCDqC-UY-hy6pirPnRlw","e":"AQAB","x5c":["MIICqTCCAZECBgGEdxNOvDANBgkqhkiG9w0BAQsFADAYMRYwFAYDVQQDDA1haWRjX2Rpc3BhdGNoMB4XDTIyMTExNDE2NTYwNFoXDTMyMTExNDE2NTc0NFowGDEWMBQGA1UEAwwNYWlkY19kaXNwYXRjaDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJgmnDNGc8zozcuhBYrTLZW2pM/vLHP4UA5zJmLaBAE3MclYkuOFURlRT97kBp9goXCnaFCRYb7/3gLYy5gVabxlupO9LHpBP1d2fTbn8T+9O+XOndNduWDdPxkpwsu7zQwWjpqiTqP2mI4s30+y1ewFwQM8OXeTataNmaevKN9iXZgxMKw/xGZfRVDbOZ/wY5NGO5AgXQGG9fxR7wrGCfdHodw/lTY3d2l8kPwd8SQpO966GbZqbx8rykVy323vLhjLB3jHcMxg0IDjTnS+qlz0M2HqyjIaRSVBtqyj7SPgBpNtHS5wmW8WzQyTIWPvt4gzQg6gvlGPocuqYqz50ZcCAwEAATANBgkqhkiG9w0BAQsFAAOCAQEAAwr43PgiHj1Lxw+iPKy1ZjXpMYKmSe4lvABjupcSNDfzJUbWgudXTirgWFEq9OYw5BKI3Xw41AhGrgF8HcnFR4ZEpow8Bztf4p5ShfCw+8K/FyqbzTU5czxugvAivYahgLkjLOMM0ZGaX4cie21CueqykP5YIaF65b+PWSUmLAmVro5l151elWU36NiFf3a3LPUeWH8LM0CQ+0vbHNwB6i+Te4zLwVYQfjuFOuOES4vjaO7NGy57cpPBQZOA1o8PuepfAZpP7ClW1jqWNYFBS5nLIyLMtD62P2/FIWSqn8vkdyjvPT1GJ29/XV0AyD2omOElmVqspnSB83nxvxUKXQ=="],"x5t":"xgZpf0GeNTQy1BsDg9zxLdkKVek","x5t#S256":"6G1KNVjlyJ_eAGMUJ76U4YIKkD-87spz4BNZgeoKV1U"}]}
+    #jwksUri: http://keycloak-keycloak-servicemesh-istio-system.itzroks-665001ngq8-n98nbi-6ccd7f378ae819553d37d5f2ee142bd6-0000.eu-de.containers.appdomain.cloud/realms/aidc_dispatch/protocol/openid-connect/certs

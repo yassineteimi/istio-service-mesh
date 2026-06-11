@@ -1,0 +1,10 @@
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: default
+  namespace: keycloak-servicemesh
+spec:
+  mtls:
+    mode: PERMISSIVE
+#namespace wide policy.
+#requires all workloads in keycloak-servicemesh foo to use mutual TLS.

@@ -1,0 +1,22 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata: 
+  name: aidc-studio-vs
+  namespace: keycloak-servicemesh
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - studio-gateway
+  http:
+  - name: "studio-route"
+    # match:
+    # - uri:
+    #     prefix: /dispatchOC/domainOC/
+    # - uri:
+    #     prefix: /health
+    route:
+    - destination:
+        host: studio-svc
+        port:
+          number: 444
