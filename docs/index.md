@@ -37,7 +37,7 @@ IBM Client Engineering — my team — worked side by side with the AIDC develop
 - A **target architecture** compatible with the bank's security constraints and technical stack — see [Architecture](architecture.md).
 - **Zero-trust networking with Istio**: strict mutual TLS between all services without touching application code, TLS at the cluster edge, and rate limiting on the exposed APIs.
 - **Authentication and authorization** through the OIDC workflow, with Keycloak as identity provider.
-- A **semi-automated installation** of the whole platform (core applications and middlewares) built with Ansible and Helm — see the [Installation guide](install_guide.md).
+- A **semi-automated installation** of the whole platform (core applications and middlewares) built with Ansible and Helm.
 - **Knowledge transfer** to the product development team, so they could own the deployment package after the engagement.
 
 ## Results
@@ -49,5 +49,4 @@ IBM Client Engineering — my team — worked side by side with the AIDC develop
 ## Explore this documentation
 
 - [Architecture](architecture.md) — system context, operational models, requirements, and the architectural decisions behind the design.
-- [Installation guide](install_guide.md) — the install guide I authored for the product's GA release (anonymized).
 - The **Istio sections** of this site are a field-tested implementation guide distilled from this engagement: design considerations, mesh installation, traffic management, security, and observability.
